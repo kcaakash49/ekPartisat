@@ -48,7 +48,7 @@ export default function Home() {
   return (
     <div>
       {/* top */}
-      <div className='flex flex-col gap-6 p-28 px-3 max-w-6xl mx-auto'>
+      <div className='flex flex-col gap-6 p-28 px-3 max-w-7xl mx-auto'>
         <h1 className='text-slate-700 font-bold text-3xl lg:text-6xl'>
           Find your next <span className='text-slate-500'>perfect</span>
           <br />
@@ -73,18 +73,18 @@ export default function Home() {
         {offerListings &&
           offerListings.length > 0 &&
           offerListings.map((listing) => (
-            <SwiperSlide>
+            <SwiperSlide key={listing._id}>
               <div
                 style={{
                   background: `url(${listing.imageUrls[0]}) center no-repeat`,
                   backgroundSize: 'cover',
                 }}
-                className='h-[500px]'
-                key={listing._id}
+                className="h-[500px]"
               ></div>
             </SwiperSlide>
           ))}
       </Swiper>
+
 
       {/* listing results for offer, sale and rent */}
 
