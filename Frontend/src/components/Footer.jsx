@@ -2,7 +2,7 @@
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-gray-300 py-8">
+    <footer className="bg-blue-950 text-gray-300 py-8">
       <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* About Section */}
         <div className="flex flex-col items-center">
@@ -25,7 +25,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="mt-8 border-t border-gray-700 pt-4 text-center text-sm">
+      <div className="mt-8 border-t border-gray-900 pt-4 text-center text-sm">
         <p>© 2024 EkPratisat. All Rights Reserved.</p>
       </div>
     </footer>
