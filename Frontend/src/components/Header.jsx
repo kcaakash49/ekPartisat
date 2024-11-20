@@ -31,7 +31,7 @@ const Header = () => {
 
 
   return (
-    <header className="bg-blue-900 shadow-md">
+    <header className="bg-[#172554] shadow-md">
       <div className="flex justify-between items-center max-w-7xl mx-auto p-3">
         {/* Logo here*/}
         <Link to="/">
