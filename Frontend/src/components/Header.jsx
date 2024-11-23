@@ -35,7 +35,7 @@ const Header = () => {
       <div className="flex justify-between items-center max-w-7xl mx-auto p-3">
         {/* Logo here*/}
         <Link to="/">
-          <img src="/assets/logo.png" alt="logo" className="w-8 h-8 sm:w-20 sm:h-20"/>
+          <img src="/assets/logo.png" alt="logo" className="w-8 h-8 sm:w-14 sm:h-14"/>
         </Link>
           
         <form onSubmit={handleSubmit} className="bg-slate-100 p-3 rounded-lg flex items-center">

@@ -51,13 +51,9 @@ const SignIn = () => {
 
   return (
     <div
-      className="h-full flex justify-center items-center bg-cover bg-center"
-      style={{
-        backgroundImage:
-          "url('https://wallpapers.com/images/hd/real-estate-background-itavpvjrif7f35tj.jpg')",
-      }}
+      className="min-h-screen flex justify-center items-center bg-gradient-to-r from-blue-900 to-purple-900"
     >
-      <div className="p-8 bg-white bg-opacity-90 shadow-lg rounded-lg max-w-md w-full">
+      <div className="p-8 bg-white bg-opacity-70 shadow-lg rounded-lg max-w-md w-full">
         <h1 className="text-4xl font-bold text-gray-800 text-center mb-6">
           Sign In
         </h1>
