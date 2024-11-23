@@ -2,7 +2,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 import OAuth from "../components/OAuth";
 
-const SignUp = () => {
+const SignUp = ({ onClose, onSwitchToSignIn }) => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -36,7 +36,7 @@ const SignUp = () => {
 
       setLoading(false);
       setError(null);
-      navigate("/signin");
+      onSwitchToSignIn();
     } catch (error) {
       setLoading(false);
       setError(error.message);
@@ -44,51 +44,49 @@ const SignUp = () => {
   };
 
   return (
-    <div
-      className="h-full flex items-center justify-center bg-cover bg-center"
-      style={{
-        backgroundImage:
-          "url('https://wallpaperboat.com/wp-content/uploads/2020/10/23/57974/real-estate-16.jpg')",
-      }}
-    >
-      <div className="p-6 bg-white bg-opacity-90 shadow-xl rounded-lg max-w-lg w-full">
-        <h1 className="text-3xl text-center font-bold text-gray-800 my-4">Sign Up</h1>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+    <div className="flex justify-center items-center bg-purple-200 rounded-3xl">
+      <div className="p-10 shadow-xl rounded-2xl max-w-lg w-full">
+        <h1 className="text-4xl text-center font-bold text-gray-800 my-4">Create Account</h1>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
           <input
             type="text"
             placeholder="Username"
-            className="border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="border border-gray-300 p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             id="username"
             onChange={handleChange}
           />
           <input
             type="email"
             placeholder="Email"
-            className="border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="border border-gray-300 p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             id="email"
             onChange={handleChange}
           />
           <input
             type="password"
             placeholder="Password"
-            className="border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="border border-gray-300 p-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             id="password"
             onChange={handleChange}
           />
           <button
-            className="bg-blue-600 text-white p-3 rounded-lg uppercase hover:opacity-90 transition disabled:opacity-70"
+            className="bg-blue-600 text-white py-3 rounded-lg text-lg uppercase font-bold hover:bg-blue-700 transition disabled:opacity-50"
             disabled={loading}
           >
-            {loading ? "Loading..." : "Sign Up"}
+            {loading ? "Creating Account..." : "Sign Up"}
           </button>
           <OAuth />
         </form>
 
-        <div className="flex justify-center gap-2 mt-5">
-          <p>Have an account?</p>
-          <Link to="/signin">
-            <span className="text-blue-700 font-semibold underline">Sign In</span>
-          </Link>
+        <div className="flex justify-center items-center gap-2 mt-6">
+          <p className="text-gray-600">Already have an account?</p>
+          <button
+            type="button"
+            onClick={onSwitchToSignIn}
+            className="text-blue-500 underline font-semibold hover:text-blue-700"
+          >
+            Sign In
+          </button>
         </div>
         {error && <p className="text-red-500 text-center mt-3">{error}</p>}
       </div>

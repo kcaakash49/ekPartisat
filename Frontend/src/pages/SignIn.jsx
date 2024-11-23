@@ -8,7 +8,7 @@ import {
 } from "../redux/user/userSlice.js";
 import OAuth from "../components/OAuth.jsx";
 
-const SignIn = () => {
+const SignIn = ({ onClose, onSwitchToSignUp }) => {
   const [formData, setFormData] = useState({});
   const { loading, error } = useSelector((state) => state.user);
   const navigate = useNavigate();
@@ -43,7 +43,7 @@ const SignIn = () => {
       }
 
       dispatch(signInSuccess(data));
-      navigate("/");
+      onClose();
     } catch (error) {
       dispatch(signInFailure(error.message));
     }
@@ -51,7 +51,7 @@ const SignIn = () => {
 
   return (
     <div
-      className="min-h-screen flex justify-center items-center bg-gradient-to-r from-blue-900 to-purple-900"
+      className="flex justify-center items-center bg-gradient-to-r from-blue-900 to-purple-900"
     >
       <div className="p-8 bg-white bg-opacity-70 shadow-lg rounded-lg max-w-md w-full">
         <h1 className="text-4xl font-bold text-gray-800 text-center mb-6">
@@ -84,9 +84,13 @@ const SignIn = () => {
 
         <div className="flex justify-center mt-6 gap-2">
           <p className="text-gray-600">Don’t have an account?</p>
-          <Link to="/signup" className="text-blue-600 hover:underline">
+          <button
+            type="button"
+            onClick={onSwitchToSignUp}
+            className="text-blue-500 underline"
+          >
             Sign Up
-          </Link>
+          </button>
         </div>
 
         {error && <p className="text-red-500 text-center mt-4">{error}</p>}

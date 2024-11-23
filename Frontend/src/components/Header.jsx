@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
-const Header = () => {
+const Header = ({ onSigninClick }) => {
   const { currentUser } = useSelector((state) => state.user);
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
@@ -35,9 +35,9 @@ const Header = () => {
       <div className="flex justify-between items-center max-w-7xl mx-auto p-3">
         {/* Logo here*/}
         <Link to="/">
-          <img src="/assets/logo.png" alt="logo" className="w-8 h-8 sm:w-14 sm:h-14"/>
+          <img src="/assets/logo.png" alt="logo" className="w-8 h-8 sm:w-14 sm:h-14" />
         </Link>
-          
+
         <form onSubmit={handleSubmit} className="bg-slate-100 p-3 rounded-lg flex items-center">
           <input
             type="text"
@@ -48,7 +48,7 @@ const Header = () => {
 
           />
           <button>
-          <FaSearch className="text-slate-600" />
+            <FaSearch className="text-slate-600" />
 
           </button>
         </form>
@@ -64,7 +64,7 @@ const Header = () => {
             </li>
           </Link>
 
-          <Link to="/profile">
+          {/* <Link to="/profile">
             {currentUser ? (
               <img
                 src={currentUser.avatar}
@@ -74,10 +74,28 @@ const Header = () => {
             ) : (
               <li className="text-white hover:bg-red-900 border-1 p-2 bg-red-700 rounded-xl">Sign In</li>
             )}
-          </Link>
+          </Link> */}
+
+          {currentUser ? (
+            <Link to="/profile">
+              <img
+                src={currentUser.avatar}
+                alt="avatar"
+                className="rounded-full h-7 w-7 object-cover"
+              />
+            </Link>
+          ) : (
+            <button
+              onClick={onSigninClick}
+              className="bg-blue-500 px-4 py-2 rounded text-white hover:bg-blue-600"
+            >
+              Sign In
+            </button>
+          )}
         </ul>
+
       </div>
-    </header>
+    </header >
   );
 };
 

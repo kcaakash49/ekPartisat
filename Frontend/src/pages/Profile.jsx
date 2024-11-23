@@ -19,7 +19,7 @@ import {
   signOutUserFailure,
 } from "../redux/user/userSlice.js";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const fileRef = useRef(null);
@@ -33,6 +33,7 @@ const Profile = () => {
 
   const [showListingsError, setShowListingsError] = useState(false);
   const [userListings, setUserListings] = useState([]);
+  
 
 
   const dispatch = useDispatch();
@@ -126,9 +127,11 @@ const Profile = () => {
       const res = await fetch(`/api/auth/signout`);
       const data = await res.json();
       if (data.success === false) {
+        
         dispatch(signOutUserFailure(data.message));
         return;
       }
+      
       dispatch(signOutUserSuccess(data));
     } catch (error) {
       dispatch(signOutUserFailure(error.message));
